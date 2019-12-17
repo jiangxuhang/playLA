@@ -1,4 +1,4 @@
-from ._global import EPSILON
+from ._global import is_zero
 import math
 
 class Vector: 
@@ -12,8 +12,11 @@ class Vector:
     def norm(self):
         return math.sqrt(sum(e**2 for e in self))
 
+    def undeflying_list(self):
+        return self._values[:]
+
     def normalize(self):
-        if self.norm() < EPSILON:
+        if is_zero(self.norm):
             raise ZeroDivisionError('zero')
         return Vector(self._values) / self.norm()
 
